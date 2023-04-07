@@ -1,0 +1,72 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+</head>
+<body>
+
+		<h3>Members of Gym</h3>
+		
+		<table class="center">
+			<thead>
+					<tr>
+						
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th> Program Plan</th>
+						<th>Age</th>
+						<th>DateOfReg</th>
+						<th>Gym Membership</th>
+						<th>Expired Date</th>
+						<th>Id Card  </th>
+						<th>Options  </th>
+					</tr>
+			</thead>
+		    <tbody>
+		        <tr th:each=" member : ${Members}">
+		        	
+		            <td th:text="${member.first_name}" />	
+		            <td th:text="${member.last_name}" />
+		            <td th:text="${member.program}" />
+		            <td th:text="${member.age}" />
+		            <td th:text="${member.dateOfRegistered}" />
+		            <td th:text="${member.gym_membership}" />
+		            <td th:text="${member.expired_date}" />
+		            <td th:text="${member.id}" />
+		            
+		            <td>
+	                 	
+		            	<a th:href="@{/members/delete/{id}(id=${member.id})}" 
+		            		onclick="if (!(confirm('Delete this Member?'))) return false;">
+							<button style="background-color: yellow; color: black;">Delete</button>
+						</a>
+			            <a th:href="@{/members/updatemember(memberId=${member.id})}"
+		                    <button style="background-color:aqua; color: black;"> Update</button>
+	                 	</a>
+		            
+		            
+		            
+		            </td>		
+		            
+		        </tr>
+		    </tbody>		
+		</table>
+		<p> </p>
+		
+		<!-- Button back -->
+		<a th:href="@{/members}"
+		    <button style="background-color:yellow; color: black;"> Back</button>
+		</a>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table.center {
+  margin-left: auto; 
+  margin-right: auto;
+}
+</style>
+</head>
+<body>
+
+		<h3>Programs of Gym</h3>
+		
+		<table class="center">
+			<thead>
+					<tr>
+						<th>Id</th>
+						<th>Program</th>
+						<th>Price</th>
+						
+						<th>Options  </th>
+					</tr>
+			</thead>
+		    <tbody>
+		        <tr th:each=" programs : ${Programs}">
+		        	
+		        	<td th:text="${programs.id}" />
+		            <td th:text="${programs.name}" />	
+		            <td th:text="${programs.price}" />
+		            
+		            
+		            <td>
+		            	<a th:href="@{/members/delete2(programId=${programs.id}) }"
+		            		onclick="if (!(confirm('Delete this Member?'))) return false">
+		 			 	  <button style="background-color:red; color: black;"> Delete</button>
+						</a>
+						
+			            <a th:href="@{/members/updateprogram(programId=${programs.id})}"
+		                    <button style="background-color:aqua; color: black;"> Update</button>
+	                 	</a>
+		            </td>		
+		            
+		        </tr>
+		    </tbody>		
+		</table>
+		<p> </p>
+		<a th:href="@{/members/addprogram}"
+		 	<button style="background-color:orange; color: black;"> Add Program</button>
+	     </a>
+	     <p> </p>
+		
+		<!-- Button back -->
+		<a th:href="@{/members}"
+		    <button style="background-color:yellow; color: black;"> Back</button>
+		</a>
+
+</body>
+</html>

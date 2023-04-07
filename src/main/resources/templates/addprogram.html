@@ -1,0 +1,46 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+	
+		
+	    <h3> Add new Member</h3>
+		<div class="container">
+	
+		
+		<hr>
+		
+		<p class="h4 mb-4">Form for new Program </p>
+	
+		<form action="#" th:action="@{/members/save2}"
+						 th:object="${program}" method="POST">
+						 
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+			
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{members}" />
+			
+			<input type="text" th:field="*{name}"
+					class="form-control mb-4 col-4" placeholder="Program" required>
+			<p></p>
+			
+			<input type="number" th:field="*{price}"
+					class="form-control mb-4 col-4" placeholder="Price" required>
+			<p></p>
+			
+			<button type="submit" class="btn btn-info col-2">Save</button>
+						
+		</form>
+	
+		<hr>
+	    <!-- Add a button -->
+		<a th:href="@{/members}"
+	    <button style="background-color:rgba(217, 255, 0, 0.404); color: black;">Back </button>
+	    <p> </p>
+	    
+		</a>
+		</div>
+	</body>
+</html>

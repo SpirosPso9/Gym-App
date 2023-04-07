@@ -1,0 +1,42 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members of Gym</title>
+    
+</head>
+
+<body>
+	
+	
+    <h1 style="font-size:300%;"> My Gym</h1>
+	<p style="background-color: gold;" th:text ="${something}"/>
+	
+    <!-- Add button -->
+	<a th:href="@{/members/listOfMembers}"
+        <button style="background-color:rgb(0, 162, 255); color: black;">Show All Members</button>
+    </a>
+    <p> </p>
+
+    <!-- Add button -->
+	<a th:href="@{/members/addmember}"
+        <button style="background-color:yellow; color: black;">Add new Member</button>
+    </a>
+    <p> </p>
+    
+    <!-- Add button -->
+	<a th:href="@{/members/showAllPrograms}"
+        <button style="background-color:yellow; color: black;">Show All Programs</button>
+    </a>
+    <p> </p>
+	
+    <!-- Add button -->
+	<a th:href="@{/logout}
+	"onclick="return confirm('Are you sure you want to logout?');">
+    <button style="background-color:rgb(255, 0, 0); color: black;">logout</button>
+    <p> </p>
+    
+</a>
+</body>
+</html>

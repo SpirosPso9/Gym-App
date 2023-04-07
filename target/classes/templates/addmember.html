@@ -1,0 +1,66 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+	
+		
+	    <h3> Add new Member</h3>
+		<div class="container">
+	
+		
+		<hr>
+		
+		<p class="h4 mb-4">Form for new Member </p>
+	
+		<form th:action="@{/members/save}"
+						 th:object="${member}" method="POST">
+						 
+			<!-- Add hidden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+			
+			<input type="text" th:field="*{first_name}"
+					class="form-control mb-4 col-4" placeholder="First name" required>
+			<p></p>
+			
+			<input type="text" th:field="*{last_name}"
+					class="form-control mb-4 col-4" placeholder="Last Name" required>
+			<p></p>
+		    <label for="program">Select a program:</label>
+					
+			<select name="program.id" class="form-control mb-4 col-4" th:field="*{program}">
+			    <option value="" th:selected="${member.program == null}">-- No program selected --</option>
+			    <option th:each="program : ${programs}" th:value="${program?.id}" th:text="${program?.name}" th:selected="${program?.id == member.program?.id}"></option>
+			</select>
+
+					
+			<p>Age</p>	
+			<input type="number" th:field="*{age}"
+					class="form-control mb-4 col-4" placeholder="Age" min="10" max="95 ">
+			<p> Date Of Registered </p>
+			<input type="date" th:field="*{dateOfRegistered}"
+					class="form-control mb-4 col-4" placeholder="DateOfReg" required>		
+			<p></p>
+			<input type="number" th:field="*{gym_membership}"
+					class="form-control mb-4 col-4" placeholder="Gym Membership" min="1" max ="12" required>
+			<p>Expired Date</p>
+			<input type="date" th:field="*{expired_date}"
+					class="form-control mb-4 col-4" placeholder="Expired Date" required>	
+			<!--p> Program Plan</p-->	
+			<!--input type="number" th:field="*{program_id}"
+					class="form-control mb-4 col-4" placeholder="Program Plan" required-->	
+			<p></p>		
+			<button type="submit" class="btn btn-info col-2">Save</button>
+						
+		</form>
+	
+		<hr>
+	    <!-- Add a button -->
+		<a th:href="@{/members}"
+	    <button style="background-color:rgba(217, 255, 0, 0.404); color: black;">Back </button>
+	    <p> </p>
+	    
+		</a>
+		</div>
+	</body>
+</html>
